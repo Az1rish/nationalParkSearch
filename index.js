@@ -14,13 +14,26 @@ function displayResults(responseJson) {
     $('#results-list').empty();
 
     // iterate through the items here
+    for (let i = 0; i < responseJson.data.length; i++) {
+        $('#results-list').append(
+            `<li><h3>${responseJson.data[i].fullName}</h3>
+            <p>${responseJson.data[i].description}</p>
+            <p>Directions: ${responseJson.data[i].directionsInfo}</p>
+            <a href="${responseJson.data[i].url}" alt="Web Address" target="_blank">Visit the website</a>
+            </li>`
+        )
+    };
     // remove the hidden class
-}
+    $('#results').removeClass('hidden');
+};
 
 function getParkInfo(query, maxResults=10) {
     const params = {
-        // required parameters
+        stateCode: query,
+        limit: maxResults,
+        api_key: apiKey
     };
+
     const queryString = formatQueryParams(params);
     const url = searchURL + '?' + queryString;
 
@@ -40,6 +53,8 @@ function getParkInfo(query, maxResults=10) {
 }
 
 function watchForm() {
+    console.log("Let's find some parks!");
+
     $('form').submit(e => {
         e.preventDefault();
         const searchTerm = $('#js-search').val();

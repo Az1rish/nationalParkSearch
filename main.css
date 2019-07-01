@@ -1,3 +1,33 @@
-p {
+* {
+   box-sizing: border-box;
+   margin: 0; 
+}
+
+html {
+    padding: 10px;
+    text-align: center;
+    /* background-color: #028000; */
+    background-color: #03cc00;
+    color: #2a150d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-message {
     color: red;
+}
+
+.block {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+li {
+    text-align: left;
+}
+
+p, a, h3 {
+    padding: 5px;
 }
