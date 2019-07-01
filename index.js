@@ -14,6 +14,11 @@ function displayResults(responseJson) {
     $('#results-list').empty();
 
     // iterate through the items here
+    if (responseJson.data.length === 0) {
+        $('#results-list').append(
+            `<h3>Nothing to see here. Are you sure that's a state?</h3>`
+        );
+    }
     for (let i = 0; i < responseJson.data.length; i++) {
         $('#results-list').append(
             `<li><h3>${responseJson.data[i].fullName}</h3>
